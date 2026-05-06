@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Press_Start_2P } from "next/font/google";
+import { ThemeProvider } from "@/lib/ThemeContext";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -33,7 +34,9 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${pressStart2P.variable} h-screen antialiased`}
     >
-      <body className="h-screen overflow-hidden">{children}</body>
+      <body className="h-screen overflow-hidden">
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }

@@ -8,6 +8,7 @@ import Experience from "./Experience";
 import Portfolio from "./Portfolio";
 import About from "./About";
 import Contact from "./Contact";
+import SettingsApp from "./Settings";
 import PixelSkyline from "./PixelSkyline";
 import { portfolioData } from "@/lib/data";
 import { AnimatePresence, motion } from "framer-motion";
@@ -161,6 +162,7 @@ export default function Desktop() {
     portfolio: <PxlKitIcon icon={MessageSquare} size={26} colorful />,
     about: <PxlKitIcon icon={User} size={26} colorful />,
     contact: <PxlKitIcon icon={CheckCircle} size={26} colorful />,
+    settings: <PxlKitIcon icon={Settings} size={26} colorful />,
   };
 
   const getWindowComponent = (appId: string) => {
@@ -170,6 +172,7 @@ export default function Desktop() {
       case "portfolio": return <Portfolio />;
       case "about": return <About />;
       case "contact": return <Contact />;
+      case "settings": return <SettingsApp />;
       default: return <div>Not found</div>;
     }
   };
@@ -195,7 +198,7 @@ export default function Desktop() {
   };
 
   const getDimensions = (appId: string) =>
-    ({ resume: { width: 800, height: 720 }, experience: { width: 720, height: 640 }, portfolio: { width: 860, height: 700 }, about: { width: 760, height: 620 }, contact: { width: 720, height: 640 } }[appId] ?? { width: 800, height: 700 });
+    ({ resume: { width: 800, height: 720 }, experience: { width: 720, height: 640 }, portfolio: { width: 860, height: 700 }, about: { width: 760, height: 620 }, contact: { width: 720, height: 640 }, settings: { width: 560, height: 480 } }[appId] ?? { width: 800, height: 700 });
 
   const getInitialPos = (_: string, i: number) => ({ x: 120 + i * 28, y: 70 + i * 28 });
 
@@ -273,20 +276,21 @@ export default function Desktop() {
 
       {/* ── Taskbar ── */}
       <div data-no-particle className="absolute bottom-0 left-0 right-0 z-[9999] flex items-center px-2 gap-2"
-        style={{ height: "40px", background: "rgba(14,10,32,0.94)", borderTop: "2px solid #3A5A8A", backdropFilter: "blur(6px)" }}
+        style={{ height: "40px", background: "var(--c-taskbar-bg)", borderTop: "2px solid var(--c-border-hi)", backdropFilter: "blur(6px)" }}
       >
         {/* Settings — bottom left */}
         <button
           data-no-particle
           title="Settings"
+          onClick={() => openApp("settings")}
           style={{
             fontFamily: "'Press Start 2P', monospace", display: "flex", alignItems: "center", gap: "6px",
-            background: "#1A1240", color: "#9DCFEA", border: "2px solid #3A5A8A",
+            background: "var(--c-bg-btn)", color: "var(--c-text-md)", border: "2px solid var(--c-border-hi)",
             padding: "4px 10px", cursor: "pointer", fontSize: "7px", letterSpacing: "1px",
-            flexShrink: 0, boxShadow: "2px 2px 0 #08061C", transition: "background 0.1s",
+            flexShrink: 0, boxShadow: "2px 2px 0 var(--c-shadow-2)", transition: "background 0.1s",
           }}
-          onMouseEnter={e => (e.currentTarget.style.background = "#241A50")}
-          onMouseLeave={e => (e.currentTarget.style.background = "#1A1240")}
+          onMouseEnter={e => (e.currentTarget.style.background = "var(--c-btn-hover)")}
+          onMouseLeave={e => (e.currentTarget.style.background = "var(--c-bg-btn)")}
           onMouseDown={e => (e.currentTarget.style.transform = "translate(1px,1px)")}
           onMouseUp={e => (e.currentTarget.style.transform = "")}
         >
@@ -294,12 +298,12 @@ export default function Desktop() {
           <span>SETTINGS</span>
         </button>
 
-        <div style={{ width: "1px", height: "22px", background: "#2A1E50", flexShrink: 0 }} />
+        <div style={{ width: "1px", height: "22px", background: "var(--c-border-lo)", flexShrink: 0 }} />
 
         {/* Window tabs */}
         <div className="flex gap-1 flex-1 min-w-0 overflow-hidden">
           {openWindows.length === 0
-            ? <span style={{ color: "#2E2250", fontSize: "7px", letterSpacing: "2px", alignSelf: "center" }}>NO OPEN WINDOWS</span>
+            ? <span style={{ color: "var(--c-border-lo)", fontSize: "7px", letterSpacing: "2px", alignSelf: "center" }}>NO OPEN WINDOWS</span>
             : openWindows.map((win) => {
               const app = getAppConfig(win.appId);
               const active = !win.isMinimized;
@@ -313,9 +317,9 @@ export default function Desktop() {
                   }}
                   style={{
                     fontFamily: "'Press Start 2P', monospace", fontSize: "7px",
-                    background: active ? "#1A1A4A" : "#10102A",
-                    color: active ? "#9DCFEA" : "#4A4A7A",
-                    border: `2px solid ${active ? "#3A5A8A" : "#202040"}`,
+                    background: active ? "var(--c-bg-btn)" : "var(--c-bg)",
+                    color: active ? "var(--c-text-md)" : "var(--c-text-lo)",
+                    border: `2px solid ${active ? "var(--c-border-hi)" : "var(--c-border-lo)"}`,
                     padding: "4px 8px", cursor: "pointer", overflow: "hidden",
                     textOverflow: "ellipsis", whiteSpace: "nowrap", letterSpacing: "0.5px",
                     flexShrink: 0, display: "flex", alignItems: "center", gap: "5px",

@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@pxlkit/core": "^1.2.3",
     "@pxlkit/feedback": "^1.2.3",
     "@pxlkit/social": "^1.2.3",

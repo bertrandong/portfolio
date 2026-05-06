@@ -1,29 +1,54 @@
 @import "tailwindcss";
 
-/* Scrollbar styling for arcade theme */
+/* ── Theme CSS custom properties (Midnight defaults) ── */
+:root {
+  --c-bg: #050d1a;
+  --c-bg-win: #071223;
+  --c-bg-btn: #0c2448;
+  --c-bg-card: #0b1f3a;
+  --c-btn-hover: #1d3f70;
+  --c-taskbar-bg: rgba(6, 10, 22, 0.94);
+  --c-tb-start: #0d2e5a;
+  --c-tb-mid: #18427a;
+  --c-border-hi: #3b6fb5;
+  --c-border-md: #2a4f84;
+  --c-border-lo: #1b3a66;
+  --c-shadow-1: #163056;
+  --c-shadow-2: #08162f;
+  --c-glow: rgba(76, 136, 210, 0.28);
+  --c-text-hi: #d6e6ff;
+  --c-text-md: #b7d6ff;
+  --c-text-sub: #7ea8d8;
+  --c-text-lo: #6d9ed8;
+  --c-accent: #4a84d0;
+  --c-icon-hover-bg: rgba(74, 136, 210, 0.12);
+  --c-icon-sel-bg: rgba(74, 136, 210, 0.25);
+  --c-icon-glow: rgba(74, 136, 210, 0.6);
+}
+
+/* ── Scrollbar ── */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0d0820;
+  background: var(--c-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #6633aa;
-  border: 1px solid #9933ff;
+  background: var(--c-border-md);
+  border: 1px solid var(--c-border-hi);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #9933ff;
+  background: var(--c-accent);
 }
 
-/* Remove all default outlines, replaced by pixel borders */
+/* ── Focus / selection ── */
 button:focus-visible {
-  outline: 2px solid #cc88ff;
+  outline: 2px solid var(--c-accent);
   outline-offset: 2px;
 }
 
-/* Pixel selection color */
 ::selection {
-  background: #6633aa;
-  color: #e0aaff;
+  background: var(--c-border-lo);
+  color: var(--c-text-hi);
 }

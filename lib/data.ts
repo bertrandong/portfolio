@@ -1,13 +1,14 @@
 // Portfolio and content data
 export const portfolioData = {
   personalInfo: {
-    name: "Bertrand",
-    title: "Full Stack Developer & Designer",
+    name: "Bertrand Ong",
+    title: "Software Engineer",
     email: "bertrandongchangheng@gmail.com",
-    location: "Earth",
+    location: "Singapore",
     bio: "Building beautiful digital experiences with modern web technologies.",
     github: "https://github.com/bertrandong",
     linkedin: "https://linkedin.com/in/bertrandoch",
+    avatar: "/photo.jpg",
   },
   resume: {
     summary:
@@ -15,39 +16,54 @@ export const portfolioData = {
     experience: [
       {
         id: 1,
-        title: "Senior Developer",
+        title: "Software Engineer Intern",
         company: "Tech Corp",
+        companyDescription: "A leading technology firm specialising in enterprise SaaS products.",
+        logo: null, // place logo at public/logos/techcorp.png
         period: "2022 - Present",
-        description:
-          "Led development of multiple full-stack applications using Next.js and React. Mentored junior developers and established best practices.",
+        location: "Singapore",
+        description: [
+          "Led development of multiple full-stack applications using Next.js and React.",
+          "Mentored junior developers and established best practices.",
+        ],
         skills: ["Next.js", "React", "TypeScript", "Node.js"],
       },
       {
         id: 2,
-        title: "Full Stack Developer",
+        title: "Software Engineer Intern",
         company: "Digital Agency",
+        companyDescription: "A boutique digital agency delivering bespoke web solutions for global clients.",
+        logo: null, // place logo at public/logos/digitalagency.png
         period: "2020 - 2022",
-        description:
-          "Developed responsive web applications for various clients. Worked on both frontend and backend systems.",
+        location: "Singapore",
+        description: [
+          "Developed responsive web applications for various clients.",
+          "Worked on both frontend and backend systems.",
+        ],
         skills: ["React", "Node.js", "PostgreSQL", "AWS"],
       },
       {
         id: 3,
-        title: "Junior Developer",
+        title: "Software Engineer Intern",
         company: "Startup Hub",
+        companyDescription: "An early-stage startup building productivity tools for remote teams.",
+        logo: null, // place logo at public/logos/startuphub.png
         period: "2019 - 2020",
-        description:
-          "Started career building features for SaaS applications. Learned agile methodologies and modern web development practices.",
+        location: "Singapore",
+        description: [
+          "Started career building features for SaaS applications.",
+          "Learned agile methodologies and modern web development practices.",
+        ],
         skills: ["JavaScript", "React", "CSS", "Git"],
       },
     ],
     education: [
       {
         id: 1,
-        degree: "Bachelor of Science",
+        degree: "Bachelor of Computing (Honours)",
         field: "Computer Science",
-        school: "State University",
-        year: "2019",
+        school: "National University of Singapore",
+        year: "2022 - 2026",
       },
     ],
     skills: [

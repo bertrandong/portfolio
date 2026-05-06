@@ -88,7 +88,6 @@ export default function Window({
         zIndex,
         cursor: isDragging ? "grabbing" : "auto",
         fontFamily: "'Press Start 2P', monospace",
-        visibility: isMinimized ? "hidden" : "visible",
         pointerEvents: isMinimized ? "none" : "auto",
       }}
       onMouseMove={handleMouseMove}
@@ -96,28 +95,31 @@ export default function Window({
       onMouseLeave={handleMouseUp}
       onMouseDown={() => onFocus?.()}
       initial={{ opacity: 0, scale: 0.92, y: 16 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
+      animate={isMinimized ? { opacity: 0, scale: 0.88, y: 20 } : { opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.92, y: 16 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
     >
       <div
-        className="w-full h-full flex flex-col bg-[#071223] border-2 border-[#3b6fb5]"
+        className="w-full h-full flex flex-col"
         style={{
-          outline: "1px solid #2a4f84",
+          background: "var(--c-bg-win)",
+          border: "2px solid var(--c-border-hi)",
+          outline: "1px solid var(--c-border-md)",
           outlineOffset: "2px",
-          boxShadow: "0 0 0 1px #163056, 4px 4px 0 #08162f, 0 0 24px rgba(76,136,210,0.28)",
+          boxShadow: "0 0 0 1px var(--c-shadow-1), 4px 4px 0 var(--c-shadow-2), 0 0 24px var(--c-glow)",
         }}
       >
         {/* Title bar */}
         <div
           onMouseDown={handleMouseDown}
-          className="h-10 flex items-center justify-between px-3 border-b-2 border-[#3b6fb5] shrink-0 select-none"
+          className="h-10 flex items-center justify-between px-3 shrink-0 select-none"
           style={{
-            background: "linear-gradient(90deg, #0d2e5a 0%, #18427a 50%, #0d2e5a 100%)",
+            background: "linear-gradient(90deg, var(--c-tb-start) 0%, var(--c-tb-mid) 50%, var(--c-tb-start) 100%)",
+            borderBottom: "2px solid var(--c-border-hi)",
             cursor: isDragging ? "grabbing" : showFullscreen ? "default" : "grab",
           }}
         >
-          <span className="text-[9px] text-[#d6e6ff] tracking-[2px]">
+          <span className="text-[9px] tracking-[2px]" style={{ color: "var(--c-text-hi)" }}>
             {title.toUpperCase()}
           </span>
 
@@ -127,8 +129,15 @@ export default function Window({
                 key={label}
                 title={tooltip}
                 onClick={onClick}
-                className="w-6 h-6 flex items-center justify-center p-0 text-[9px] leading-none bg-[#0c2448] text-[#b7d6ff] border border-[#2a4f84] cursor-pointer transition-colors duration-100 hover:bg-[#1d3f70]"
-                style={{ fontFamily: "'Press Start 2P', monospace" }}
+                className="w-6 h-6 flex items-center justify-center p-0 text-[9px] leading-none cursor-pointer transition-colors duration-100"
+                style={{
+                  fontFamily: "'Press Start 2P', monospace",
+                  background: "var(--c-bg-btn)",
+                  color: "var(--c-text-md)",
+                  border: "1px solid var(--c-border-md)",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "var(--c-btn-hover)")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "var(--c-bg-btn)")}
               >
                 {label}
               </button>
@@ -139,24 +148,23 @@ export default function Window({
         {/* Pixel scan line */}
         <div
           className="h-0.5 shrink-0 opacity-50"
-          style={{
-            background: "repeating-linear-gradient(90deg, #4a84d0 0px, #4a84d0 6px, transparent 6px, transparent 12px)",
-          }}
+          style={{ background: "repeating-linear-gradient(90deg, var(--c-accent) 0px, var(--c-accent) 6px, transparent 6px, transparent 12px)" }}
         />
 
         {/* Content area */}
-        <div className="flex-1 overflow-hidden bg-[#050d1a] relative">
-          <div className="absolute inset-1 border border-[#1b3a66] pointer-events-none z-10" />
+        <div className="flex-1 overflow-hidden relative" style={{ background: "var(--c-bg)" }}>
+          <div className="absolute inset-1 pointer-events-none z-10" style={{ border: "1px solid var(--c-border-lo)" }} />
           <div className="absolute inset-0 overflow-auto">
             {children}
           </div>
         </div>
 
         {/* Status bar */}
-        <div className="h-5 border-t border-[#1b3a66] flex items-center px-2 gap-4 shrink-0 bg-[#071223]">
-          <span className="text-[7px] text-[#6d9ed8] tracking-[1px]">READY</span>
-          <div className="w-px h-3 bg-[#1b3a66]" />
-          <span className="text-[7px] text-[#6d9ed8] tracking-[1px]">{title.toUpperCase()}</span>
+        <div
+          className="h-5 flex items-center px-2 gap-4 shrink-0"
+          style={{ borderTop: "1px solid var(--c-border-lo)", background: "var(--c-bg-win)" }}
+        >
+          <span className="text-[7px] tracking-[1px]" style={{ color: "var(--c-text-lo)" }}>{title.toUpperCase()}</span>
         </div>
       </div>
     </motion.div>

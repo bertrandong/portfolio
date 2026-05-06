@@ -36,14 +36,14 @@ export default function AppIcon({ icon, name, description, onClick }: AppIconPro
         cursor: "pointer",
         fontFamily: "'Press Start 2P', monospace",
         background: isSelected
-          ? "rgba(74,132,208,0.25)"
+          ? "var(--c-icon-sel-bg)"
           : isHovered
-          ? "rgba(74,132,208,0.12)"
+          ? "var(--c-icon-hover-bg)"
           : "transparent",
         border: isSelected
-          ? "1px dashed #b7d6ff"
+          ? "1px dashed var(--c-text-md)"
           : isHovered
-          ? "1px dashed #2f5f9a"
+          ? "1px dashed var(--c-border-md)"
           : "1px solid transparent",
         width: "fit-content",
         minWidth: "160px",
@@ -59,9 +59,9 @@ export default function AppIcon({ icon, name, description, onClick }: AppIconPro
         alignItems: "center",
         justifyContent: "center",
         fontSize: "22px",
-        background: "#0b1f3a",
-        border: "2px solid #2f5f9a",
-        boxShadow: isHovered ? "0 0 8px rgba(74,132,208,0.6)" : "2px 2px 0 #08162f",
+        background: "var(--c-bg-card)",
+        border: "2px solid var(--c-border-md)",
+        boxShadow: isHovered ? "0 0 8px var(--c-icon-glow)" : "2px 2px 0 var(--c-shadow-1)",
         flexShrink: 0,
         transition: "box-shadow 0.15s",
         imageRendering: "pixelated",
@@ -72,23 +72,14 @@ export default function AppIcon({ icon, name, description, onClick }: AppIconPro
       {/* Label */}
       <span style={{
         fontSize: "8px",
-        color: isSelected ? "#ffffff" : isHovered ? "#d6e6ff" : "#b7d6ff",
+        color: isSelected ? "#ffffff" : isHovered ? "var(--c-text-hi)" : "var(--c-text-md)",
         letterSpacing: "1px",
         lineHeight: "1.5",
-        textShadow: isSelected || isHovered ? "0 0 8px rgba(140,190,255,0.8)" : "none",
+        textShadow: isSelected || isHovered ? "0 0 8px var(--c-icon-glow)" : "none",
         transition: "color 0.1s",
       }}>
         {name.toUpperCase()}
       </span>
-
-      {/* Arrow indicator */}
-      <span style={{
-        fontSize: "8px",
-        color: "#4a84d0",
-        opacity: isHovered ? 1 : 0,
-        transition: "opacity 0.1s",
-        marginLeft: "auto",
-      }}>▶</span>
     </motion.div>
   );
 }
