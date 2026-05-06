@@ -8,7 +8,7 @@ export const portfolioData = {
     bio: "Building beautiful digital experiences with modern web technologies.",
     github: "https://github.com/bertrandong",
     linkedin: "https://linkedin.com/in/bertrandoch",
-    avatar: "/photo.jpg",
+    avatar: "/portfolio/photo.jpg",
   },
   resume: {
     summary:
