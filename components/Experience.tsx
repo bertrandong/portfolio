@@ -43,7 +43,7 @@ export default function Experience() {
                   <img
                     src={job.logo}
                     alt={job.company}
-                    className="w-full h-full object-contain p-1.5"
+                    className="w-full h-full object-cover"
                     onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
                   />
                 ) : (
@@ -51,9 +51,6 @@ export default function Experience() {
                     {job.company.slice(0, 2).toUpperCase()}
                   </span>
                 )}
-                {["top-0 left-0", "top-0 right-0", "bottom-0 left-0", "bottom-0 right-0"].map((pos, i) => (
-                  <div key={i} className={`absolute ${pos} w-1 h-1 bg-(--c-border-md)`} />
-                ))}
               </div>
             </div>
 

@@ -85,19 +85,26 @@ export default function About() {
       </PixelSection>
 
       <PixelSection label="TECH STACK" delay={0.3}>
-        <div className="flex flex-wrap gap-2">
-          {resume.skills.map((tech, i) => (
-            <motion.div
-              key={tech}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.35 + i * 0.04 }}
-              whileHover={{ scale: 1.05 }}
-              className="text-[7px] px-2.5 py-1.5 bg-(--c-bg-card) text-(--c-text-md) border border-(--c-border-md) tracking-[1px] cursor-default"
-              style={{ boxShadow: "2px 2px 0 var(--c-shadow-2)" }}
-            >
-              {tech}
-            </motion.div>
+        <div className="flex flex-col gap-4">
+          {(["languages", "frontend", "backend"] as const).map((category) => (
+            <div key={category}>
+              <div className="text-[6px] text-(--c-text-lo) tracking-[2px] mb-2 uppercase">{category}</div>
+              <div className="flex flex-wrap gap-2">
+                {resume.skills[category].map((tech, i) => (
+                  <motion.div
+                    key={tech}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.35 + i * 0.04 }}
+                    whileHover={{ scale: 1.05 }}
+                    className="text-[7px] px-2.5 py-1.5 bg-(--c-bg-card) text-(--c-text-md) border border-(--c-border-md) tracking-[1px] cursor-default"
+                    style={{ boxShadow: "2px 2px 0 var(--c-shadow-2)" }}
+                  >
+                    {tech}
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </PixelSection>

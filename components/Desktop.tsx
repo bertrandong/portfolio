@@ -27,7 +27,7 @@ interface OpenWindow {
 // ── Pixel mascot ──────────────────────────────────────────────────────────────
 function PixelMascot() {
   const [talking, setTalking] = useState(false);
-  const messages = ["Hi! I'm Bert 👾", "Click me again!", "I love pixels!", "Build cool things!"];
+  const messages = ["Hi! I'm Bert!", "Currently based in Singapore!", "Interested in startups!", "Enjoy building cool things!"];
   const [msgIdx, setMsgIdx] = useState(0);
 
   const handleClick = (e: React.MouseEvent) => {
@@ -288,6 +288,7 @@ export default function Desktop() {
             background: "var(--c-bg-btn)", color: "var(--c-text-md)", border: "2px solid var(--c-border-hi)",
             padding: "4px 10px", cursor: "pointer", fontSize: "7px", letterSpacing: "1px",
             flexShrink: 0, boxShadow: "2px 2px 0 var(--c-shadow-2)", transition: "background 0.1s",
+            height: "28px", boxSizing: "border-box",
           }}
           onMouseEnter={e => (e.currentTarget.style.background = "var(--c-btn-hover)")}
           onMouseLeave={e => (e.currentTarget.style.background = "var(--c-bg-btn)")}
@@ -323,7 +324,7 @@ export default function Desktop() {
                     padding: "4px 8px", cursor: "pointer", overflow: "hidden",
                     textOverflow: "ellipsis", whiteSpace: "nowrap", letterSpacing: "0.5px",
                     flexShrink: 0, display: "flex", alignItems: "center", gap: "5px",
-                    maxWidth: "130px",
+                    maxWidth: "130px", height: "28px", boxSizing: "border-box",
                   }}
                 >
                   {APP_ICONS[win.appId]}
