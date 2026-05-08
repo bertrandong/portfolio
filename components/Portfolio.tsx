@@ -2,6 +2,15 @@
 
 import { portfolioData } from "@/lib/data";
 import { motion } from "framer-motion";
+import { FaGithub } from "react-icons/fa";
+import { ExternalLink, Workflow, Target, KeyRound, Users, LucideIcon } from "lucide-react";
+
+const PROJECT_ICONS: Record<string, LucideIcon> = {
+  Workflow,
+  Target,
+  KeyRound,
+  Users,
+};
 
 export default function Portfolio() {
   const { portfolio } = portfolioData;
@@ -18,69 +27,91 @@ export default function Portfolio() {
 
       {/* Projects */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
-        {portfolio.projects.map((project, idx) => (
-          <motion.div
-            key={project.id}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: idx * 0.07, duration: 0.25 }}
-            whileHover={{ y: -3 }}
-            style={{
-              border: "1px solid var(--c-border-lo)",
-              padding: "14px",
-              background: "var(--c-bg-card)",
-              position: "relative",
-              cursor: "pointer",
-              transition: "border-color 0.15s",
-            }}
-            onMouseEnter={e => (e.currentTarget.style.borderColor = "var(--c-accent)")}
-            onMouseLeave={e => (e.currentTarget.style.borderColor = "var(--c-border-lo)")}
-          >
-            {/* corner dots */}
-            {["top-0 left-0", "top-0 right-0", "bottom-0 left-0", "bottom-0 right-0"].map((pos, i) => (
-              <div key={i} className={`absolute ${pos}`} style={{ width: 5, height: 5, background: "var(--c-border-md)" }} />
-            ))}
-
-            {/* Icon */}
-            <div style={{ fontSize: "28px", marginBottom: "10px" }}>{project.image}</div>
-
-            {/* Title */}
-            <div style={{ fontSize: "8px", color: "var(--c-text-hi)", letterSpacing: "1px", marginBottom: "8px", lineHeight: "1.5" }}>
-              {project.title}
-            </div>
-
-            {/* Description */}
-            <p style={{ fontSize: "7px", color: "var(--c-text-sub)", lineHeight: "1.8", marginBottom: "10px", letterSpacing: "0.3px" }}>
-              {project.description}
-            </p>
-
-            {/* Tech tags */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "4px", marginBottom: "10px" }}>
-              {project.technologies.map((tech, i) => (
-                <span key={i} style={{
-                  fontSize: "6px", padding: "3px 6px",
-                  background: "var(--c-bg-card)", color: "var(--c-text-sub)",
-                  border: "1px solid var(--c-border-md)", letterSpacing: "1px",
-                }}>
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            {/* Link */}
-            <motion.a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ x: 3 }}
-              style={{ fontSize: "7px", color: "var(--c-text-md)", letterSpacing: "1px", textDecoration: "none", display: "inline-block" }}
-              onMouseEnter={e => (e.currentTarget.style.color = "var(--c-text-hi)")}
-              onMouseLeave={e => (e.currentTarget.style.color = "var(--c-text-md)")}
+        {portfolio.projects.map((project, idx) => {
+          const Icon = PROJECT_ICONS[project.image];
+          return (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.07, duration: 0.25 }}
+              whileHover={{ y: -3 }}
+              style={{
+                border: "1px solid var(--c-border-lo)",
+                padding: "14px",
+                background: "var(--c-bg-card)",
+                position: "relative",
+                cursor: "default",
+                transition: "border-color 0.15s",
+                display: "flex",
+                flexDirection: "column",
+              }}
+              onMouseEnter={e => (e.currentTarget.style.borderColor = "var(--c-accent)")}
+              onMouseLeave={e => (e.currentTarget.style.borderColor = "var(--c-border-lo)")}
             >
-              OPEN ▶
-            </motion.a>
-          </motion.div>
-        ))}
+              {/* corner dots */}
+              {["top-0 left-0", "top-0 right-0", "bottom-0 left-0", "bottom-0 right-0"].map((pos, i) => (
+                <div key={i} className={`absolute ${pos}`} style={{ width: 5, height: 5, background: "var(--c-border-md)" }} />
+              ))}
+
+              {/* Icon */}
+              <div style={{ marginBottom: "10px", color: "var(--c-accent)", opacity: 0.85 }}>
+                {Icon && <Icon size={28} strokeWidth={1.5} />}
+              </div>
+
+              {/* Title */}
+              <div style={{ fontSize: "8px", color: "var(--c-text-hi)", letterSpacing: "1px", marginBottom: "8px", lineHeight: "1.5" }}>
+                {project.title}
+              </div>
+
+              {/* Description */}
+              <p style={{ fontSize: "7px", color: "var(--c-text-sub)", lineHeight: "1.8", marginBottom: "10px", letterSpacing: "0.3px", flexGrow: 1 }}>
+                {project.description}
+              </p>
+
+              {/* Tech tags */}
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "4px", marginBottom: "12px" }}>
+                {project.technologies.map((tech, i) => (
+                  <span key={i} style={{
+                    fontSize: "6px", padding: "3px 6px",
+                    background: "var(--c-bg-card)", color: "var(--c-text-sub)",
+                    border: "1px solid var(--c-border-md)", letterSpacing: "1px",
+                  }}>
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              {/* Links */}
+              <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+                <motion.a
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.15 }}
+                  style={{ color: "var(--c-text-md)", textDecoration: "none", display: "inline-flex", alignItems: "center" }}
+                  onMouseEnter={e => (e.currentTarget.style.color = "var(--c-text-hi)")}
+                  onMouseLeave={e => (e.currentTarget.style.color = "var(--c-text-md)")}
+                >
+                  <FaGithub size={17} />
+                </motion.a>
+                {project.deployedLink && (
+                  <motion.a
+                    href={project.deployedLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.15 }}
+                    style={{ color: "var(--c-text-md)", textDecoration: "none", display: "inline-flex", alignItems: "center" }}
+                    onMouseEnter={e => (e.currentTarget.style.color = "var(--c-text-hi)")}
+                    onMouseLeave={e => (e.currentTarget.style.color = "var(--c-text-md)")}
+                  >
+                    <ExternalLink size={17} strokeWidth={1.75} />
+                  </motion.a>
+                )}
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
     </div>
   );
