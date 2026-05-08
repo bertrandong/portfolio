@@ -63,9 +63,7 @@ export default function Settings() {
                   ))}
                 </div>
                 <div className="text-[7px] tracking-[1px] text-[var(--c-text-md)]">{theme.name}</div>
-                {active && (
-                  <div className="text-[6px] text-[var(--c-accent)] mt-1.5 tracking-[1px]">● ACTIVE</div>
-                )}
+                <div className="text-[6px] mt-1.5 tracking-[1px]" style={{ color: active ? "var(--c-accent)" : "transparent" }}>● ACTIVE</div>
               </button>
             );
           })}
