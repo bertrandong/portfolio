@@ -3,13 +3,14 @@
 import { portfolioData } from "@/lib/data";
 import { motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
-import { ExternalLink, Workflow, Target, KeyRound, Users, LucideIcon } from "lucide-react";
+import { ExternalLink, Workflow, Target, KeyRound, Users, FileText, LucideIcon } from "lucide-react";
 
 const PROJECT_ICONS: Record<string, LucideIcon> = {
   Workflow,
   Target,
   KeyRound,
   Users,
+  FileText,
 };
 
 export default function Portfolio() {

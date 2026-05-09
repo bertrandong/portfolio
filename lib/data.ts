@@ -119,6 +119,16 @@ export const portfolioData = {
         deployedLink: null,
         image: "Users",
       },
+      {
+        id: 5,
+        title: "Resume Builder",
+        description:
+          "Resume builder with ATS scorer that provides feedback on formatting and content. Built with Next.js and TypeScript, featuring a drag-and-drop interface and PDF export functionality.",
+        technologies: ["TypeScript", "Next.js"],
+        githubLink: "https://github.com/bertrandong/resume-builder",
+        deployedLink: "https://resume-builder-by-bertrandong.vercel.app/",
+        image: "FileText",
+      }
     ],
   },
   apps: [
