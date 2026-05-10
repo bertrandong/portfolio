@@ -214,7 +214,7 @@ export default function Desktop() {
       }} />
 
       {/* ── HERO ── */}
-      <div className="absolute inset-x-0 top-0 flex flex-col items-center z-20 pointer-events-none select-none" style={{ paddingTop: "clamp(20px, 5vh, 48px)" }}>
+      <div className="absolute inset-x-0 top-0 flex flex-col items-center z-20 pointer-events-none select-none pt-14 md:pt-[clamp(20px,5vh,48px)]">
         <motion.div initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }} style={{ position: "relative" }}>
           <div style={{ position: "absolute", top: 4, left: 4, fontSize: "clamp(18px, 3.8vw, 46px)", color: "#0e0c28", letterSpacing: "7px", whiteSpace: "nowrap" }}>
             BERTRAND
@@ -339,8 +339,8 @@ export default function Desktop() {
       </div>
 
       {/* ── Mobile taskbar ── */}
-      <div data-no-particle className="md:hidden absolute bottom-0 left-0 right-0 z-[9999] flex items-center justify-between px-3"
-        style={{ height: "calc(44px + env(safe-area-inset-bottom))", paddingBottom: "env(safe-area-inset-bottom)", background: "var(--c-taskbar-bg)", borderTop: "2px solid var(--c-border-hi)", backdropFilter: "blur(6px)" }}
+      <div data-no-particle className="md:hidden absolute top-0 left-0 right-0 z-[9999] flex items-center justify-between px-3"
+        style={{ height: "calc(44px + env(safe-area-inset-top))", paddingTop: "env(safe-area-inset-top)", background: "var(--c-taskbar-bg)", borderBottom: "2px solid var(--c-border-hi)", backdropFilter: "blur(6px)" }}
       >
         <button
           data-no-particle
@@ -371,15 +371,15 @@ export default function Desktop() {
         {menuOpen && (
           <motion.div
             data-no-particle
-            initial={{ y: "100%" }}
+            initial={{ y: "-100%" }}
             animate={{ y: 0 }}
-            exit={{ y: "100%" }}
+            exit={{ y: "-100%" }}
             transition={{ type: "tween", duration: 0.2, ease: "easeOut" }}
             className="md:hidden absolute left-0 right-0 z-[9998]"
             style={{
-              bottom: "calc(44px + env(safe-area-inset-bottom))",
+              top: "calc(44px + env(safe-area-inset-top))",
               background: "var(--c-taskbar-bg)",
-              borderTop: "2px solid var(--c-border-hi)",
+              borderBottom: "2px solid var(--c-border-hi)",
               backdropFilter: "blur(8px)",
               maxHeight: "65vh",
               overflowY: "auto",
