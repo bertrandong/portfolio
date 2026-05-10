@@ -24,6 +24,10 @@ export const metadata: Metadata = {
   description: "A retro-themed personal portfolio website with desktop interface",
 };
 
+export const viewport = {
+  viewportFit: "cover",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{

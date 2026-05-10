@@ -340,7 +340,7 @@ export default function Desktop() {
 
       {/* ── Mobile taskbar ── */}
       <div data-no-particle className="md:hidden absolute bottom-0 left-0 right-0 z-[9999] flex items-center justify-between px-3"
-        style={{ height: "44px", background: "var(--c-taskbar-bg)", borderTop: "2px solid var(--c-border-hi)", backdropFilter: "blur(6px)" }}
+        style={{ height: "calc(44px + env(safe-area-inset-bottom))", paddingBottom: "env(safe-area-inset-bottom)", background: "var(--c-taskbar-bg)", borderTop: "2px solid var(--c-border-hi)", backdropFilter: "blur(6px)" }}
       >
         <button
           data-no-particle
@@ -377,7 +377,7 @@ export default function Desktop() {
             transition={{ type: "tween", duration: 0.2, ease: "easeOut" }}
             className="md:hidden absolute left-0 right-0 z-[9998]"
             style={{
-              bottom: "44px",
+              bottom: "calc(44px + env(safe-area-inset-bottom))",
               background: "var(--c-taskbar-bg)",
               borderTop: "2px solid var(--c-border-hi)",
               backdropFilter: "blur(8px)",
