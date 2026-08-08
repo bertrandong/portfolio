@@ -16,6 +16,19 @@ export const portfolioData = {
     experience: [
       {
         id: 1,
+        title: "Software Engineer",
+        company: "Shopee",
+        companyDescription: "Shopee is the leading e-commerce platform in Southeast Asia and Taiwan, part of Sea Limited, serving millions of buyers and sellers across the region.",
+        logo: "/portfolio/logos/shopee.jpg",
+        period: "Jul 2026 - Present",
+        location: "Singapore",
+        description: [
+          "Building and maintaining scalable backend services powering core e-commerce features for millions of users across Southeast Asia.",
+        ],
+        skills: ["Go", "Redis", "MySQL"],
+      },
+      {
+        id: 2,
         title: "Software Engineer Intern",
         company: "Funding Societies",
         companyDescription: "Funding Societies is Southeast Asia's largest SME digital financing and debt investment platform, speciaising in short-term financing for SMEs, funded by individual and institutional investors.",
@@ -30,7 +43,7 @@ export const portfolioData = {
         skills: ["TypeScript", "Python", "Node.js", "Datadog"],
       },
       {
-        id: 2,
+        id: 3,
         title: "Software Engineer Intern",
         company: "DeepVerse",
         companyDescription: "DeepVerse, through innovative and cross-discipline breakthroughs in materials science and AI, is pioneering the future of R&D and manufacturing.",
@@ -47,7 +60,7 @@ export const portfolioData = {
         skills: ["Python", "PostgreSQL", "MongoDB", "Docker", "Linux"],
       },
       {
-        id: 3,
+        id: 4,
         title: "Software Engineer Intern",
         company: "Boxgreen",
         companyDescription: "Boxgreen is a Singapore-based startup that delivers healthy snacks to offices and homes across Southeast Asia.",
